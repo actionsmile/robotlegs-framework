@@ -420,5 +420,12 @@ package robotlegs.bender.framework.impl
 				throw error;
 			}
 		}
+
+		private function getFunctionName(e:Error):String {
+    		var stackTrace:String = e.getStackTrace();     // entire stack trace
+    		var startIndex:int = stackTrace.indexOf("at ");// start of first line
+    		var endIndex:int = stackTrace.indexOf("()");   // end of function name
+    		return stackTrace.substring(startIndex + 3, endIndex);
+		}
 	}
 }
